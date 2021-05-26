@@ -1,0 +1,40 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/quhao/quhao",
+    "pages/qucan/qucan",
+    "pages/my/my",
+    "pages/notice/notice"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "点餐",
+      "iconPath": "/images/nav/index-off.png",
+      "selectedIconPath": "/images/nav/index-on.png"
+    },{
+      "pagePath": "pages/quhao/quhao",
+      "text": "取号",
+      "iconPath": "/images/nav/qh-off.png",
+      "selectedIconPath": "/images/nav/qh-on.png"
+    },{
+      "pagePath": "pages/qucan/qucan",
+      "text": "取餐",
+      "iconPath": "/images/nav/qc-off.png",
+      "selectedIconPath": "/images/nav/qc-on.png"
+    },{
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath": "/images/nav/my-off.png",
+      "selectedIconPath": "/images/nav/my-on.png"
+    }]
+  },
+ 
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,66 @@
+<view class="container">
+  <van-notice-bar
+    class="notice"
+      left-icon="volume-o"
+      text="{{noticeLastOne.title}}"
+      data-id="{{noticeLastOne.id}}"
+      bindtap="_hankNoticel"
+    />
+  <view class="header">
+    <view class="header-top">
+      <view class="header-seller">南山路店</view>
+        <view class="switch">
+          <view class="item {{iszq?'active':''}}"  bindtap="switchzq">自取</view>
+          <view class="item {{!iszq?'active':''}}" bindtap="switchzq">外卖</view>
+        </view>
+    </view>
+    <view class="header-bottom">
+      <view class="seller-posin">距您555米</view>
+      <view class="seller-posin">查看附近门店</view>
+    </view>
+  </view>
+  <view class="main">
+    <view class="nav">
+      <scroll-view  scroll-y style="height:{{scrollH}}px">
+        <van-sidebar active-key="{{ activeKey }}">
+          <van-sidebar-item wx:for="{{menuList}}" data-idx="{{index}}" wx:key="id" title="{{item.name}}" 
+          badge="{{ item.badge ? item.badge : '' }}" bindtap="_hankMenu" />
+        </van-sidebar>
+      </scroll-view>
+    </view>
+    <view class="list-dox">
+      <scroll-view class="scroll-view" scroll-y style="height:{{scrollH}}px">
+        <swiper class="swiper" wx:if="{{banner}}" indicator-dots="true" autoplay="true" circular="true">
+          <swiper-item wx:for="{{banner}}" wx:key="id">
+            <image class="banner-img" src="{{item.picUrl}}"></image>
+          </swiper-item>
+        </swiper>
+        <view class="list-item">
+          <block wx:if="{{goods.length>0}}">
+            <view class="item-box" wx:for="{{goods}}" wx:key="id">
+              <van-card
+                lazy-load="true"
+                tag="{{item.bage?item.bage:''}}"
+                price="{{item.minPrice}}"
+                origin-price="{{item.originalPrice>0?item.originalPrice:''}}"
+                desc="{{item.characteristic}}"
+                title="{{item.name}}"
+                thumb="{{ item.pic }}"
+                thumb-mode="aspectFill"
+              >
+                <view slot="footer" class="goods-btn">
+                  <van-button class="btn" wx:if="{{item.pingtuan}}" size="small" color="#e64340" round data-idx="{{index}}">一起拼</van-button>
+                  <van-button wx:elif="{{item.propertyIds || item.hasAddition}}" size="small" color="#e64340" round data-idx="{{index}}">选规格</van-button>
+                  <van-icon wx:else name="add" color="#e64340" size="50rpx" data-idx="{{index}}" bindtap="addCart" />
+                </view>
+              </van-card>
+            </view>
+        </block>
+        <block wx:else>
+          <van-empty description="暂无商品" />
+        </block>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

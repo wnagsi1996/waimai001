@@ -1,0 +1,24 @@
+{
+  "name": "miniprogram-3",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.6.8",
+    "apifm-wxapi": "^3.37.0",
+    "mp-html": "^2.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wnagsi1996/waimai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wnagsi1996/waimai/issues"
+  },
+  "homepage": "https://github.com/wnagsi1996/waimai#readme",
+  "description": ""
+}

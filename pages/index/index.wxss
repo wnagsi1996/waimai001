@@ -1,0 +1,84 @@
+/**index.wxss**/
+.container{
+  height: 100vh;
+}
+.header{
+  padding-top: 20rpx;
+  width: 750rpx;
+  height:120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between
+}
+.header-top{
+  display: flex;
+  padding: 0 20rpx;
+  align-items: flex-end;
+}
+.header-seller{
+  flex: 1;
+  
+}
+.header-top .switch{
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background-color: #f7f7f7;
+  border-radius: 60rpx;
+  display: flex;
+  align-items: center;
+}
+.header-top .switch .item{
+  text-align: center;
+  flex: 1;
+  font-size: 26rpx;
+  height: 100%;
+  color: #666;
+}
+.header-top .switch .active {
+  background-color: #000;
+  color: #fff;
+  border-radius: 60rpx;
+}
+.header-bottom{
+  display: flex;
+  padding: 0 20rpx;
+}
+.seller-posin{
+  flex: 1;
+}
+.seller-posin:last-child{
+  text-align: right;
+}
+.main{
+  display: flex;
+  margin-top: 20rpx;
+}
+.nav{
+  width: 160rpx;
+}
+.list-dox{
+  flex:1;
+}
+.swiper{
+  height: 260rpx;
+  padding: 20rpx;
+}
+.scroll-view{
+  height: 100%;
+}
+.banner-img{
+  width: 100%;
+  height: 260rpx;
+}
+.list-item{
+  padding:0 20rpx 20rpx 20rpx;
+}
+.item-box{
+  margin:16rpx 0
+}
+.goods-btn{
+  position: absolute;
+  right: 10rpx;
+  bottom: 10rpx;
+}

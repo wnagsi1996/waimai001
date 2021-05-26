@@ -1,0 +1,5 @@
+<!--pages/notice/notice.wxml-->
+<view class="content">
+  <mp-html content="{{html}}" />
+</view>
+
