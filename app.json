@@ -6,7 +6,9 @@
     "pages/my/my",
     "pages/notice/notice",
     "pages/shop/shop",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/address/address"
+
   ],
   "window":{
     "backgroundTextStyle":"light",

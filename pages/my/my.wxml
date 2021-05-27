@@ -1,2 +1,17 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view>
+  <view class="header">
+      <view class="login-btn">
+        <van-button type="default">立即登录</van-button>
+      </view>
+    
+  </view>
+  <van-cell-group>
+    <van-cell title="每日签到" is-link />
+    <van-cell title="会员中心" is-link />
+    <van-cell title="在线定座" is-link />
+    <van-cell title="优惠买单" is-link />
+    <van-cell title="收获地址" is-link />
+    <van-cell title="关于我们" is-link />
+  </van-cell-group>
+</view>

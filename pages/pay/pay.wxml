@@ -1,12 +1,12 @@
 <!--pages/pay/pay.wxml-->
 <view class="container">
-  <van-cell title="单元格" value="内容" size="large" is-link label="描述信息" />
+  <van-cell title="{{shopInfo.name}} / 距离您{{shopInfo.distance}}km" size="large" is-link label="{{shopInfo.address}}" />
   <view class="seller-btn">
     <view class="btn">
-      <van-button icon="shop-o" color="red" block>到店自取</van-button>
+      <van-button icon="shop-o" color="red" plain="{{peisongType=='zq'?false:true}}" data-zt="zq" block bindtap="_hankSwitch">到店自取</van-button>
     </view>
     <view class="btn">
-      <van-button icon="logistics" color="red" plain block>外卖配送</van-button>
+      <van-button icon="logistics" color="red" plain="{{peisongType=='kd'?false:true}}" data-zt="kd" block bindtap="_hankSwitch">外卖配送</van-button>
     </view>
   </view>
   <view>
@@ -21,45 +21,25 @@
       >
         <van-button slot="button" size="small" type="primary">验证</van-button>
       </van-field>
-      <van-cell title="取餐时间" value="请选择" size="large" is-link />
+      <van-cell title="取餐时间" value="{{diningTime==0?'请选择':diningTime}}" size="large" is-link bindtap="_hankDate" />
   </van-cell-group>
   </view>
   <view class="p-box">
     <view class="p-title">商品信息</view>
     <view class="p-info">
-      <view class="p-item">
+      <view class="p-item" wx:for="{{goodsList}}" wx:key="index">
         <view class="p-left">
-          <view class="p-name">1111</view>
-          <view class="p-attr">222</view>
+          <view class="p-name">{{item.name}}</view>
+          <view class="p-attr">
+            <block wx:for="{{item.sku}}" wx:for-item="items" wx:for-index="idx" wx:key="idx">
+                <text>{{items.optionName}}:{{items.optionValueName}}</text>
+            </block>
+          </view>
         </view>
-        <view class="p-num">x1</view>
-        <view class="p-price">￥10</view>
+        <view class="p-num">x{{item.number}}</view>
+        <view class="p-price">￥{{item.price}}</view>
       </view>
-       <view class="p-item">
-        <view class="p-left">
-          <view class="p-name">1111</view>
-          <view class="p-attr">222</view>
-        </view>
-        <view class="p-num">x1</view>
-        <view class="p-price">￥10</view>
-      </view>
-       <view class="p-item">
-        <view class="p-left">
-          <view class="p-name">1111</view>
-          <view class="p-attr">222</view>
-        </view>
-        <view class="p-num">x1</view>
-        <view class="p-price">￥10</view>
-      </view>
-      <view class="p-item">
-        <view class="p-left">
-          <view class="p-name">1111</view>
-          <view class="p-attr">222</view>
-        </view>
-        <view class="p-num">x1</view>
-        <view class="p-price">￥10</view>
-      </view>
-      <view class="p-total">共计2建商品，总共￥35元</view>
+      <view class="p-total">共计2件商品，总共￥35元</view>
       <van-field
         label="备注"
         value="{{ value }}"
@@ -74,3 +54,24 @@
       bind:submit="onSubmit"
     />
 </view>
+
+<!-- 时间选择 -->
+<van-popup
+  show="{{ dataShow }}"
+  round
+  position="bottom"
+  bind:close="diningTimeHide"
+>
+<van-datetime-picker
+  type="time"
+  value="{{ currentDate }}"
+  min-hour="{{ minHour }}"
+  max-hour="{{ 22 }}"
+  min-minute="{{ minMinute }}"
+  formatter="{{ formatter }}"
+  filter="{{filter}}"
+  bind:change="diningTimeChange"
+  bind:cancel="diningTimeHide"
+  bind:confirm="diningTimeConfirm"
+/>
+</van-popup>

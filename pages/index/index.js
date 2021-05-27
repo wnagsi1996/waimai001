@@ -420,12 +420,12 @@ Page({
       nameLike:kw,
       pageSize:1
     })
-    console.log(res)
     if(res.code==0){
       res.data[0].distance=(res.data[0].distance).toFixed(2);
       this.setData({
         shopInfo:res.data[0]
       })
+      wx.setStorageSync('shopInfo', res.data[0])
     }
   }
 })

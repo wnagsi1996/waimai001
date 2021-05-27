@@ -1,1 +1,9 @@
 /* pages/my/my.wxss */
+.header{
+  height: 200rpx;
+  background-color: red;
+}
+.login-btn{
+  text-align: center;
+  line-height: 200rpx;
+}

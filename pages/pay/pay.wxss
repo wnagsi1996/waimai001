@@ -27,9 +27,10 @@ page{
 .p-left{
   flex: 1;
 }
-.p-attr{
+.p-attr text{
   color: #666;
   font-size: 24rpx;
+  padding-right: 20rpx;
 }
 .p-total{
   text-align: right;
