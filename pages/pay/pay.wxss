@@ -1,0 +1,40 @@
+/* pages/pay/pay.wxss */
+page{
+  background-color: #f7f7f7;
+}
+.seller-btn{
+  background-color: #fff;
+  display: flex;
+}
+.seller-btn .btn{
+  flex: 1;
+  padding:30rpx 40rpx;
+}
+.p-box{
+  margin: 60rpx 0 100rpx;
+  background-color: #fff;
+}
+.p-title{
+  font-size: 32rpx;
+  padding:20rpx;
+}
+
+.p-item{
+  margin:20rpx 0;
+  display: flex;
+  padding:20rpx;
+}
+.p-left{
+  flex: 1;
+}
+.p-attr{
+  color: #666;
+  font-size: 24rpx;
+}
+.p-total{
+  text-align: right;
+  padding-right: 40rpx;
+}
+.p-num,.p-price{
+  width: 80rpx;
+}

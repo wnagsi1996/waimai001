@@ -4,7 +4,9 @@
     "pages/quhao/quhao",
     "pages/qucan/qucan",
     "pages/my/my",
-    "pages/notice/notice"
+    "pages/notice/notice",
+    "pages/shop/shop",
+    "pages/pay/pay"
   ],
   "window":{
     "backgroundTextStyle":"light",

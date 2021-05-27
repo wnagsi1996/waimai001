@@ -1,0 +1,9 @@
+/* pages/shop/shop.wxss */
+.shopImg image{
+  width: 100%;
+  height: 360rpx;
+}
+.map-box map{
+  width: 750rpx;
+  height: 375rpx;
+}

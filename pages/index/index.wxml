@@ -8,15 +8,17 @@
     />
   <view class="header">
     <view class="header-top">
-      <view class="header-seller">南山路店</view>
+      <view class="header-seller">{{shopInfo.name}}</view>
         <view class="switch">
           <view class="item {{iszq?'active':''}}"  bindtap="switchzq">自取</view>
           <view class="item {{!iszq?'active':''}}" bindtap="switchzq">外卖</view>
         </view>
     </view>
     <view class="header-bottom">
-      <view class="seller-posin">距您555米</view>
-      <view class="seller-posin">查看附近门店</view>
+      <view class="seller-posin">距您{{shopInfo.distance}}千米</view>
+      <navigator url="/pages/shop/shop?id={{shopInfo.id}}">
+        <view class="seller-posin">查看附近门店 <van-icon name="arrow" /></view>
+      </navigator>
     </view>
   </view>
   <view class="main">
@@ -50,7 +52,7 @@
               >
                 <view slot="footer" class="goods-btn">
                   <van-button class="btn" wx:if="{{item.pingtuan}}" size="small" color="#e64340" round data-idx="{{index}}">一起拼</van-button>
-                  <van-button wx:elif="{{item.propertyIds || item.hasAddition}}" size="small" color="#e64340" round data-idx="{{index}}">选规格</van-button>
+                  <van-button wx:elif="{{item.propertyIds || item.hasAddition}}" size="small" color="#e64340" round data-idx="{{index}}" bindtap="_goodsAddition">选规格</van-button>
                   <van-icon wx:else name="add" color="#e64340" size="50rpx" data-idx="{{index}}" bindtap="addCart" />
                 </view>
               </van-card>
@@ -64,3 +66,91 @@
     </view>
   </view>
 </view>
+
+<!-- 购物车导航 -->
+<view class="cart-box" wx:if="{{showCartPop}}">
+  <view class="cart-info">
+    <view class="cart-num" bindtap="_hankShowCart">
+      <van-icon class="icon" size="36rpx" name="cart-o" />
+      <view>购物车</view>
+      <text>{{shippingCarInfo.number}}</text>
+    </view>
+    <view class="cart-price">{{shippingCarInfo.price}}元</view>
+  </view>
+  <view class="cart-btn">选好了</view>
+</view>
+
+<!-- 购物车弹出 -->
+<van-popup
+  show="{{ Cartshow }}"
+  round
+  position="bottom"
+  custom-style="height: 50%"
+  bind:close="onClose"
+>
+  <view class="cart-del">
+    <van-icon class="icon" size="36rpx" name="delete-o" />
+    <text bindtap="_hankDelCart">清空购物车</text>
+  </view>
+  <view>
+    <view class="cart-cell" wx:for="{{shippingCarInfo.items}}" wx:key="id">
+    <view class="c-title">{{item.name}}</view>
+    <view class="c-price">￥{{item.number*item.price}}</view>
+    <view class="c-num" bindtap="_handCartNum" data-id="0">
+      <van-stepper value="{{ item.number }}" min="0" async-change disable-input data-idx="{{index}}" bind:change="_handCartNum"/>
+    </view>
+  </view>
+  </view>
+</van-popup>
+
+<wxs module="foo">
+  var bar=function(item){
+    var num=item>3?item%3:3-item;
+    var arr=[];
+    if(num>0){
+      for(var i=0;i<num;i++){
+        arr.push(i);
+      }
+    }
+    return arr;
+  }
+  
+  module.exports={
+    bar:bar
+  }
+</wxs>
+
+<!-- 商品加入购物车选规格弹出 -->
+<van-popup
+  show="{{ detailShow }}"
+  round
+  position="bottom"
+  custom-style="height: 70%"
+  bind:close="onClose"
+  z-index:99999
+>{{foo.a}}
+  <view class="d-dox">
+    <view class="d-title">{{curGoodsMap.basicInfo.name}} <text>￥{{curGoodsMap.price}}</text></view>
+    <view class="d-attr">
+      <view class="d-attr-cell" wx:for="{{curGoodsMap.properties}}" wx:key="id">
+        <view class="d-cell-name">{{item.name}}</view>
+        <view class="d-cell-desc">
+        <block wx:for="{{item.childsCurGoods}}" wx:key="id" wx:for-item="small" wx:for-index="index2">
+          <view class="d-item {{small.selected?'active':''}}" data-idx1="{{index}}" data-idx2="{{index2}}" bindtap="_hankSku">{{small.name}}</view>
+        </block>  
+        <block wx:if="{{foo.bar(item.childsCurGoods.length).length>0}}">
+          <view class="d-item-null"  wx:for="{{foo.bar(item.childsCurGoods.length)}}" wx:key="id"></view>
+        </block>
+        </view>
+      </view>
+    </view>
+    
+    <view class="d-bottom">
+      <view class="d-btn">
+           <van-button type="primary"  color="red" round block bindtap="_hankaddCar">加入购物车</van-button>
+      </view>
+    </view>
+    <view class="d-bottom-null"></view>
+  </view>
+</van-popup>
+
