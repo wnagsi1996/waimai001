@@ -1,0 +1,27 @@
+<!--pages/shopList/shopList.wxml-->
+<van-search value="{{ searchValue }}" placeholder="搜索商家" bind:search="search" />
+<view>
+  <view class="shop-list">
+    <view class="shop-dox" wx:for="{{shopList}}" wx:key="index">
+      <view class="item">
+        <van-icon name="shop-o" />
+        <text>{{item.name}}{{item.distance}}km</text>
+      </view>
+    <view class="item">
+      <van-icon name="location-o" />
+      <text>{{item.address}}</text>
+    </view>
+    <view class="item">
+      <van-icon name="underway-o" />
+      <text>{{item.openingHours}}</text>
+    </view>
+    <view class="item">
+      <van-icon name="phone-o" />
+      <text>{{item.linkPhone}}</text>
+    </view>
+    <view class="item">
+      <van-button wx:if="{{index == 0}}" block color="red" bindtap="goShop" data-idx="{{ index }}">选择门店</van-button>
+    </view>
+  </view>
+   </view>
+</view>

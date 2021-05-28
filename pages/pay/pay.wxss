@@ -39,3 +39,15 @@ page{
 .p-num,.p-price{
   width: 80rpx;
 }
+.address{
+  background-color: #fff;
+  padding: 20rpx;
+}
+.address-null{
+  padding:40rpx 100rpx;
+  display: flex;
+}
+.address-null view{
+  padding-left: 10rpx;
+  font-size: 36rpx;
+}

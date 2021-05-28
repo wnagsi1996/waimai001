@@ -1,10 +1,33 @@
 <!--pages/my/my.wxml-->
 <view>
   <view class="header">
-      <view class="login-btn">
+      <view class="" wx:if="{{userInfo && userInfo.base.nick}}">
+        <view class="user-info">
+          <image mode="" src="{{userInfo.base.avatarUrl}}"></image>
+          <view class="user-level">
+            <text>{{userInfo.base.nick}}</text>
+            <text wx:if="{{userInfo.userLevel}}" class="leval">{{userInfo.userLevel}}111</text>
+            <text class="no-leval">非会员</text>
+          </view>
+        </view>
+      </view>
+      <view class="login-btn" wx:else>
         <van-button type="default">立即登录</van-button>
       </view>
-    
+  </view>
+  <view class="info-box">
+    <view class="info-item">
+      <text>{{couponStatistics}}</text>
+      <text>优惠券</text>
+    </view>
+     <view class="info-item">
+      <text>￥{{balance}}</text>
+      <text>余额</text>
+    </view>
+     <view class="info-item">
+      <text>{{score}}</text>
+      <text>积分</text>
+    </view>
   </view>
   <van-cell-group>
     <van-cell title="每日签到" is-link />

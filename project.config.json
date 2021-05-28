@@ -88,6 +88,26 @@
 					"pathName": "pages/pay/pay",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "地址",
+					"pathName": "pages/address/address",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商家列",
+					"pathName": "pages/shopList/shopList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "用户中心",
+					"pathName": "pages/my/my",
+					"scene": null
 				}
 			]
 		}

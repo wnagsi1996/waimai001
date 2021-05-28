@@ -1,1 +1,57 @@
 /* pages/address/address.wxss */
+page{
+  background-color: #f7f7f7;
+}
+.address-null{
+  padding:150rpx
+}
+.address-null view{
+  color: #666;
+  padding:10rpx 0;
+}
+.address-null button{
+  margin-top: 60rpx;
+}
+.address-edit{
+  position: relative;
+}
+.address-location{
+  position: absolute;
+  right: 30rpx;
+  bottom:10rpx;
+  width: 50rpx;
+  height: 70rpx;
+}
+.address-btn{
+  width: 700rpx;
+  margin-top: 40rpx;
+  margin-left: 25rpx;
+}
+.ad-list{
+  padding:20rpx
+}
+.ad-item{
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+}
+.ad-item-left{
+  flex: 1;
+}
+
+.ad-item-desc{
+  margin-top:8rpx
+}
+.btn-edit{
+  width: 100rpx;
+  text-align: center;
+}
+.add-btn{
+  width: 700rpx;
+  position: fixed;
+  bottom: 10rpx;
+  left: 25rpx;
+}

@@ -1,11 +1,18 @@
 // pages/my/my.js
+const CONFIG = require('../../config.js')
+const WXAPI = require('apifm-wxapi')
+const AUTH = require('../../utils/auth')
+const APP = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    couponStatistics:0, //优惠券
+    userInfo:0, //用户信息
+    balance:0, //余额
+    score:0, //积分
   },
 
   /**
@@ -26,7 +33,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    AUTH.checkHasLogined().then(isLogined => {
+     if(isLogined){
+       this.getUserApiInfo()
+       this.getUserAmount();
+     }
+    })
   },
 
   /**
@@ -42,25 +54,32 @@ Page({
   onUnload: function () {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  //获取用户信息
+  async getUserApiInfo(){
+    let res=await WXAPI.userDetail(wx.getStorageSync('token'))
+    console.log(res)
+    if(res.code==0){
+      this.setData({
+        userInfo:res.data
+      })
+    }
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  async getUserAmount() {
+    const res = await WXAPI.userAmount(wx.getStorageSync('token'))
+    if (res.code == 0) {
+      this.setData({
+        balance: res.data.balance,
+        score: res.data.score
+      })
+    }
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //获取优惠券
+  async couponStatistics() {
+    let res= await WXAPI.couponStatistics(wx.getStorageSync('token'))
+    if (res.code == 0) {
+      this.setData({
+        couponStatistics: res.data
+      })
+    }
   }
 })

@@ -2,3 +2,22 @@
 view,text{
   font-size: 28rpx;
 }
+.font-size28{
+  font-size: 28rpx !important;
+}
+.font-size32{
+  font-size: 32rpx !important;
+}
+.font-size36{
+  font-size: 36rpx !important;
+}
+.font-size24{
+  font-size: 24rpx !important;
+}
+.text-center{
+  text-align: center;
+}
+.text-right{
+  text-align: right;
+}
+

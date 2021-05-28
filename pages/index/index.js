@@ -427,5 +427,10 @@ Page({
       })
       wx.setStorageSync('shopInfo', res.data[0])
     }
+  },
+  topay(){
+    wx.navigateTo({
+      url: '/pages/pay/pay',
+    })
   }
 })

@@ -6,6 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    totalMoney:0, //总的金额
+    yunfei:8, //运费，不做处理，统一8
+    goods:[],  //商品数据
     shopInfo:{}, //店铺信息
     goodsList:[],  //商品信息数据
     peisongType: 'zq', // 配送方式 kd,zq 分别表示快递/到店自取
@@ -51,7 +54,6 @@ Page({
     this.setData({
       shopInfo:wx.getStorageSync('shopInfo')
     })
-    console.log(this.data.shopInfo)
   },
 
   /**
@@ -70,8 +72,10 @@ Page({
   //切换配送
   _hankSwitch(e){
     this.setData({
-      peisongType:e.currentTarget.dataset.zt
+      peisongType:e.currentTarget.dataset.zt,
+      totalMoney:e.currentTarget.dataset.zt=='kd'?this.data.yunfei+this.data.goods.price:this.data.goods.price
     })
+    
     console.log(this.data.peisongType)
   },
   //获取数据
@@ -80,24 +84,38 @@ Page({
     let res=await WXAPI.shippingCarInfo(token);
     if(res.code==0){
       this.setData({
-        goodsList:res.data.items
+        goods:res.data,
+        goodsList:res.data.items,
+        totalMoney:res.data.price
       })
       this.getShippingAddress()
     }else{
       wx.navigateBack();
     }
   },
+  //去往商家列表
+  toShopList(){
+    wx.navigateTo({
+      url: '/pages/shopList/shopList?type=pay',
+    })
+  },
   //获取地址
   async getShippingAddress(){
     let token=wx.getStorageSync('token');
-    let res=await WXAPI.defaultAddress(token);
+    let res=await WXAPI.defaultAddress(token);console.log(res)
     this.setData({
       curAddressData:res.code==0?res.data.info:null
     })
     // this.processYunfei();
   },
   //跳到新增地址
-  addAddress(){
+  _hankAddAddress(){
+    wx.navigateTo({
+      url: '/pages/address/address',
+    })
+  },
+  //跳到新增地址
+  _hankAddress(){
     wx.navigateTo({
       url: '/pages/address/address',
     })

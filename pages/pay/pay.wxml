@@ -1,6 +1,6 @@
 <!--pages/pay/pay.wxml-->
 <view class="container">
-  <van-cell title="{{shopInfo.name}} / 距离您{{shopInfo.distance}}km" size="large" is-link label="{{shopInfo.address}}" />
+  <van-cell title-class="font-size28" value-class="font-size28" title="{{shopInfo.name}} / 距离您{{shopInfo.distance}}km" size="large" is-link label="{{shopInfo.address}}" bindtap="toShopList" />
   <view class="seller-btn">
     <view class="btn">
       <van-button icon="shop-o" color="red" plain="{{peisongType=='zq'?false:true}}" data-zt="zq" block bindtap="_hankSwitch">到店自取</van-button>
@@ -10,7 +10,16 @@
     </view>
   </view>
   <view>
-  <van-cell-group>
+  <view class="address" wx:if="{{peisongType=='kd'}}">
+    <view class="address-null" wx:if="{{curAddressData==null}}" bindtap="_hankAddAddress">
+      <van-icon name="add-o" size="38rpx" />
+      <view>添加地址</view>
+    </view>
+    <view wx:else>
+      <van-cell title-class="font-size28" value-class="font-size28" title="{{curAddressData.linkMan}} {{curAddressData.mobile}}" size="large" is-link label="{{curAddressData.address}}" bindtap="_hankAddress" />
+    </view>
+  </view>
+  <van-cell-group wx:else>
       <van-field
         value="{{ sms }}"
         center
@@ -21,8 +30,8 @@
       >
         <van-button slot="button" size="small" type="primary">验证</van-button>
       </van-field>
-      <van-cell title="取餐时间" value="{{diningTime==0?'请选择':diningTime}}" size="large" is-link bindtap="_hankDate" />
   </van-cell-group>
+  <van-cell  title-class="font-size28" value-class="font-size28" title="{{peisongType=='zq'?'取餐时间':'送达时间'}}" value="{{diningTime==0?'请选择':diningTime}}" size="large" is-link bindtap="_hankDate" />
   </view>
   <view class="p-box">
     <view class="p-title">商品信息</view>
@@ -39,17 +48,18 @@
         <view class="p-num">x{{item.number}}</view>
         <view class="p-price">￥{{item.price}}</view>
       </view>
-      <view class="p-total">共计2件商品，总共￥35元</view>
+      <view class="p-total">共计{{goods.number}}件商品，总共￥{{goods.price}}元</view>
       <van-field
         label="备注"
         value="{{ value }}"
         placeholder="备注信息"
         bind:change="onChange"
       />
+      <van-cell title-class="font-size28" value-class="font-size28" title="配送费" value="￥{{yunfei}}" size="large" is-link />
     </view>
   </view>
   <van-submit-bar
-      price="{{ 3050 }}"
+      price="{{ totalMoney*100}}"
       button-text="提交订单"
       bind:submit="onSubmit"
     />

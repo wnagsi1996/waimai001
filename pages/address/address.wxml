@@ -1,2 +1,81 @@
 <!--pages/address/address.wxml-->
-<text>pages/address/address.wxml</text>
+<view>
+  <view wx:if="{{!addressEdit}}">
+    <view class="address-null" wx:if="{{addressNull}}">
+      <view class="font-size32 text-center">暂无地址信息</view>
+      <view class="font-size32 text-center">点击按钮添加地址信息</view>
+      <button bindtap="_hankAddAddress">新增地址</button>
+    </view>
+    <view wx:else>
+      <view class="ad-list">
+        <view class="ad-item" wx:for="{{addressList}}" wx:key="index">
+          <view class="ad-item-left" data-id="{{item.id}}" bindtap="selectTap">
+            <view class="ad-item-name">{{item.linkMan}} {{item.mobile}}</view>
+            <view class="ad-item-desc">{{item.address}}</view>
+          </view>
+          <view class="btn-edit">
+            <van-icon name="edit" size="48rpx" data-item="{{item}}" bindtap="_hankEdit" />
+          </view>
+        </view>
+      </view>
+      <view class="add-btn">
+        <van-button bindtap="_hankAddAddress" plain block color="red">新增地址</van-button>
+      </view>
+    </view>
+  </view>
+  <view class="address-edit" wx:else>
+    <van-cell-group>
+     <van-field
+     label="用户名"
+      value="{{ address.name }}"
+      placeholder="请输入用户名"
+      bind:blur="usernameInp"
+      error-message="{{address.nameerr}}"
+    />
+    <van-field
+      label="手机号码"
+      value="{{ address.phoneNumber }}"
+      placeholder="请输入手机号码"
+      error-message="{{address.phoneNumbererr}}"
+      bind:blur="phoneInp"
+    />
+    <picker mode="multiSelector" range="{{pickerRegionRange}}" range-key="name" value="{{pickerSelect}}" bindchange="bindchange" bindcolumnchange="bindcolumnchange">
+    <van-field
+     label="选择地区"
+      value="{{ address.address }}"
+      placeholder="请选择地区"
+      readonly
+      right-icon="arrow"
+      error-message="{{address.addresserr}}"
+    />
+    </picker>
+    <van-field
+     label="详细地址"
+     type="textarea"
+     autosize
+      value="{{ address.addressinfo }}"
+      placeholder="请输入详细地址"
+      error-message="{{address.addressinfoerr}}"
+      right-icon="location-o"
+      bind:blur="addressInfoInp"
+    />
+    <view class="address-location" bindtap="_hanktomap"></view>
+    </van-cell-group>
+    <view class="address-btn">
+      <van-button block color="red" round bindtap="_hankSave">保存</van-button>
+      <view style="height:30rpx"></view>
+      <van-button wx:if="{{id!=''}}" block color="red" round plain  bindtap="_hankdelAddress">删除</van-button>
+    </view>
+  </view>
+</view>
+
+<van-popup
+  show="{{ Cityshow }}"
+  round
+  position="bottom"
+  custom-style="height: 50%"
+  bind:close="onCityClose"
+>
+  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}" />
+</van-popup>
+

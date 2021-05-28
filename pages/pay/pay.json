@@ -6,6 +6,7 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-submit-bar": "@vant/weapp/submit-bar/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-icon": "@vant/weapp/icon/index"
   }
 }
