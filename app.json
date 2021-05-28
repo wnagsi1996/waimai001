@@ -8,7 +8,10 @@
     "pages/shop/shop",
     "pages/pay/pay",
     "pages/address/address",
-    "pages/shopList/shopList"
+    "pages/shopList/shopList",
+    "pages/sign/sign",
+    "pages/youhui/youhui",
+    "pages/member/member"
 
   ],
   "window":{

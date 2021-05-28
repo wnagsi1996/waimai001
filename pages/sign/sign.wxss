@@ -1,0 +1,5 @@
+/* pages/sign/sign.wxss */
+.btn{
+  width: 50%;
+  margin:20rpx auto;
+}

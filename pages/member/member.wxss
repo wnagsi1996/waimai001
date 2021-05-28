@@ -1,0 +1,93 @@
+/* pages/member/member.wxss */
+.container{
+  width: 700rpx;
+  margin:25rpx auto;
+ 
+}
+.header{
+  height: 250rpx;
+  background-color: red;
+  border-radius: 10rpx;
+}
+.user-info{
+  padding:30rpx;
+  display: flex;
+  
+}
+.user-info image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+}
+.user-info .user-level{
+  padding-left: 40rpx;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.user-info .user-level text:first-child{
+  font-size: 38rpx;
+}
+.user-info .user-level text.no-leval{
+  color: #f7f7f7;
+}
+.info-box{
+  height: 150rpx;
+  display: flex;
+  align-items: center;
+}
+.info-item{
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.info-item text:last-child{
+  margin-top: 10rpx;
+}
+.system{
+  font-size:38rpx;
+  margin-top: 80rpx;
+  margin-bottom: 40rpx;
+  text-align: center;
+}
+.title-box{
+  display: flex;
+  justify-content: space-around;
+  margin-left: 25rpx;
+  width: 700rpx;
+  height: 80rpx;
+  background-color: #d3aa79;
+  text-align: center;
+  line-height: 80rpx;
+  color: #ffffff;
+}
+.title1, .title2, .title3{
+  width: 233rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-style: solid;
+  border-color: #f5f5f5;
+  border-width: thin;
+}
+.title-box-0{
+  display: flex;
+  justify-content: space-around;
+  margin-left: 25rpx;
+  width: 700rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+.title-box-0:nth-child(2n+1){
+  background-color: #f7f7f7;
+}
+.remark{
+  text-align: center;
+  margin-top: 30rpx;
+  font-size: 25rpx;
+  color: #666;
+  margin-bottom: 64rpx;
+}

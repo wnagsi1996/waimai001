@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -35,6 +36,18 @@
         {
           "name": "我的",
           "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "优惠",
+          "pathName": "pages/youhui/youhui",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "会员",
+          "pathName": "pages/member/member",
           "scene": null
         }
       ]

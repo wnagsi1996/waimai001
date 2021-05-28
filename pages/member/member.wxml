@@ -1,0 +1,26 @@
+<!--pages/member/member.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="user-info">
+      <image mode="" src="{{userInfo.base.avatarUrl}}"></image>
+      <view class="user-level">
+        <text>{{userInfo.base.nick}} {{apiUserInfoMap.userLevel?'('+apiUserInfoMap.userLevel.name+')':'(非会员)'}}</text>
+        <text wx:if="{{userInfo.userLevel}}" class="leval">{{userInfo.userLevel}}111</text>
+        <text>累计消费:{{totleConsumed}}</text>
+        
+      </view>
+    </view>
+  </view>
+  <view class="system">会员成长体系</view>
+    <view class="title-box">
+      <view class="title1">级别名称</view>
+      <view class="title2">购物折扣</view>
+      <view class="title3">消费标准(元)</view>
+    </view>
+    <view wx:for="{{levelList}}" wx:key="id" class="title-box-0">
+      <view class="title1">{{item.name}}</view>
+      <view class="title2">{{item.rebate}}</view>
+      <view class="title3">{{item.upgradeAmount}}</view>
+    </view>
+    <view class="remark">注：当购物消费达指定标准自动成为该级别会员</view>
+</view>

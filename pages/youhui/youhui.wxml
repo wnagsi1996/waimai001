@@ -1,0 +1,16 @@
+<!--pages/youhui/youhui.wxml-->
+<view class="container">
+  <van-cell title-class="font-size28" value-class="font-size28" title="{{shopInfo.name}} / 距离您{{shopInfo.distance}}km" size="large" is-link label="{{shopInfo.address}}" bindtap="toShopList" />
+  <view class="youhui-dox">
+    <view class="name">优惠买单</view>
+    <view class="item-money">
+      <text class="icon">￥</text>
+      <view class="money">
+        <input type="number" value="{{money}}" />
+      </view>
+    </view>
+    <view class="btn">
+      <button type="primary" bindtap="_hankFk">确认付款</button>
+    </view>
+  </view>
+</view>

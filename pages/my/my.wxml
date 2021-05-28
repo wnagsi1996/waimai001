@@ -12,12 +12,12 @@
         </view>
       </view>
       <view class="login-btn" wx:else>
-        <van-button type="default">立即登录</van-button>
+        <van-button type="default" bindtap="upadteUserInfo">立即登录</van-button>
       </view>
   </view>
   <view class="info-box">
     <view class="info-item">
-      <text>{{couponStatistics}}</text>
+      <text>{{couponStatistics.canUse}}</text>
       <text>优惠券</text>
     </view>
      <view class="info-item">
@@ -30,11 +30,12 @@
     </view>
   </view>
   <van-cell-group>
-    <van-cell title="每日签到" is-link />
-    <van-cell title="会员中心" is-link />
+    <van-cell title="每日签到" is-link url="/pages/sign/sign" />
+    <van-cell title="会员中心" is-link url="/pages/member/member" />
     <van-cell title="在线定座" is-link />
-    <van-cell title="优惠买单" is-link />
-    <van-cell title="收获地址" is-link />
+    <van-cell title="优惠买单" is-link url="/pages/youhui/youhui" />
+    <van-cell title="收获地址" is-link url="/pages/address/address" />
     <van-cell title="关于我们" is-link />
   </van-cell-group>
 </view>
+<c-test list="5"></c-test>

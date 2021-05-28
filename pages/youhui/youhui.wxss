@@ -1,0 +1,33 @@
+/* pages/youhui/youhui.wxss */
+page{
+  background-color: #f7f7f7;
+}
+.container{
+  width: 700rpx;
+  margin:25rpx auto;
+  background-color:#fff;
+  border-radius: 10rpx;
+}
+.youhui-dox{
+  padding:30rpx;
+}
+.youhui-dox .name{
+  color:#666
+}
+.item-money{
+  padding:20rpx 0;
+  display: flex;
+  align-items: center;
+  border-bottom:1rpx solid #f7f7f7;
+}
+.item-money .icon{
+  font-size:48rpx;
+}
+.item-money input{
+  padding-left: 30rpx;
+  font-size: 48rpx;
+  color: red;
+}
+.btn{
+  margin-top: 30rpx;
+}

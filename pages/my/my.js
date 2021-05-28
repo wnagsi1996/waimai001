@@ -37,6 +37,11 @@ Page({
      if(isLogined){
        this.getUserApiInfo()
        this.getUserAmount();
+       this.couponStatistics()
+     }else{
+       AUTH.authorize().then(res=>{
+         AUTH.bindSeller();
+       })
      }
     })
   },
@@ -75,11 +80,47 @@ Page({
   },
   //获取优惠券
   async couponStatistics() {
-    let res= await WXAPI.couponStatistics(wx.getStorageSync('token'))
+    let res= await WXAPI.couponStatistics(wx.getStorageSync('token'));
     if (res.code == 0) {
       this.setData({
         couponStatistics: res.data
       })
     }
+  },
+  //获取用户信息
+  upadteUserInfo(){
+    wx.getUserProfile({
+      lang:'zh_CN',
+      desc:'完善资料'
+    }).then(res=>{
+      console.log(res)
+      this._updateUserInfo(res.userInfo)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  //更新用户信息
+ async  _updateUserInfo(userInfo){
+    const postData = {
+      token: wx.getStorageSync('token'),
+      nick: userInfo.nickName,
+      avatarUrl: userInfo.avatarUrl,
+      city: userInfo.city,
+      province: userInfo.province,
+      gender: userInfo.gender,
+    }
+    
+    let res=await WXAPI.modifyUserInfo(postData);
+    if(res!=0){
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
+      return;
+    }
+    wx.showToast({
+      title: '登陆成功',
+    })
+    this.getUserApiInfo()
   }
 })
