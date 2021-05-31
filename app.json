@@ -11,7 +11,9 @@
     "pages/shopList/shopList",
     "pages/sign/sign",
     "pages/youhui/youhui",
-    "pages/member/member"
+    "pages/member/member",
+    "pages/allOrder/allOrder",
+    "pages/orderDetail/orderDetail"
 
   ],
   "window":{

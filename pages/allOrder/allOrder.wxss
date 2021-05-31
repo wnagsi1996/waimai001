@@ -1,0 +1,74 @@
+/* pages/allOrder/allOrder.wxss */
+page{
+  background-color: #f7f7f7;
+}
+.list{
+  margin: 20rpx;
+}
+.order-dox{
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-bottom: 30rpx;
+  padding:20rpx;
+}
+.order-header{
+  border-bottom: 1px solid #f7f7f7;
+  display: flex;
+  align-items: center;
+  padding: 10rpx 0;
+}
+.order-header .name{
+  flex: 1;
+}
+.order-header .status{
+  width: 160rpx;
+  text-align: right;
+}
+.order-info{
+  width: 100%;
+}
+.scroll-view{
+  width: 100%;
+  
+}
+.img-list{
+  display: flex;
+  padding:20rpx 0;
+}
+.img-list image{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+  border-radius: 8rpx;
+}
+.order-bottom{
+  margin-top: 20rpx;
+  display: flex;
+  align-items: flex-end;
+}
+.order-bottom .time{
+  flex: 1;
+}
+.order-bottom .price{
+  width: 160rpx;
+  text-align: right;
+}
+.order-bottom .price .num{
+  color: red;
+  font-size: 48rpx;
+}
+.order-btn{
+  margin-top: 30rpx;
+  text-align: right;
+}
+.order-btn van-button{
+  margin-left: 20rpx;
+}
+
+.del-btn{
+  color: #fff;
+  height: 100%;
+  background-color: red;
+  margin-left: 1rpx;
+  border-radius: 0 10rpx 10rpx 0;
+}

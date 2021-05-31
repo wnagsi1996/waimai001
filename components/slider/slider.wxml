@@ -1,0 +1,11 @@
+<!--components/slider/slider.wxml-->
+<movable-area class="movable-area" style="width:{{areaWidth}}rpx;height:{{areaHeight}}rpx">
+  <movable-view class="movable-view" direction="horizontal" x="{{x}}" inertia style="width:{{areaWidth+delWidth}}rpx;height:{{areaHeight}}rpx" bindtouchstart="bindtouchstart" bindtouchend="bindtouchend">
+    <view class="left-content" style="width:{{areaWidth}}rpx">
+      <slot name="left"></slot>
+    </view>
+    <view class="right-del" style="width:{{delWidth}}rpx;height:{{areaHeight}}rpx;line-height:{{areaHeight}}rpx;">
+      <slot name="right"></slot>
+    </view>
+  </movable-view>
+</movable-area>

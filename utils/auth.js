@@ -155,7 +155,7 @@ async function checkAndAuthorize (scope) {
       success:(res)=>{
         if (!res.authSetting[scope]) {
           wx.authorize({
-            scope: 'scope',
+            scope: scope,
             success:()=>{
               resolve() //无返回参数
             },

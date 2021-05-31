@@ -7,12 +7,22 @@ Page({
   data: {
 
   },
-
+  getPhoneNumber (e) {
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // wx.authorize({
+    //   scope: 'scope.werun',
+    // }).then(res=>{
+    //   console.log(res)
+    // }).catch(err=>{console.log(err)})
+    //
+    // wx.startLocationUpdateBackground().then(res=>{console.log(res)}).catch(err=>{console.log(err)})
   },
 
   /**

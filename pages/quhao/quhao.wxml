@@ -1,2 +1,2 @@
 <!--pages/quhao/quhao.wxml-->
-<text>pages/quhao/quhao.wxml</text>
+<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">1561651</button>

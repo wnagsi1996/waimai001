@@ -1,0 +1,19 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="detail-dox">
+  <view class="status">
+    <van-icon name="close" size="88rpx" color="#888" />
+    <view>当前订单已关闭</view>
+  </view>
+  <view class="shop-info">
+    <van-cell title="{{shopSubdetail.info.name}}" label="{{shopSubdetail.info.address}}" border="{{false}}" />
+    <van-icon name="phone-circle-o" size="88rpx" color="green" bindtap="_hankPhone" />
+  </view>
+  <view class="detail-desc">
+    <van-cell wx:for="{{orderDetail.goods}}" wx:key="id" title="{{item.goodsName}} / x{{item.number}}" label="{{item.property}}" value="¥{{item.amount}}" value-class="call-value" />
+    <van-cell title="合计" value="¥{{orderDetail.orderInfo.amountReal}}" value-class="call-value" />
+  </view>
+  <view class="times">
+    <view>下单: {{orderDetail.orderInfo.dateAdd}}</view>
+    <view wx:if="{{orderDetail.orderInfo.status == -1}}">关闭: {{orderDetail.orderInfo.dateClose}}</view>
+  </view>
+</view>

@@ -1,0 +1,16 @@
+/* components/slider/slider.wxss */
+.movable-area{
+  overflow: hidden;
+}
+.movable-view{
+  display: flex;
+  align-items: center;
+}
+.left-content{
+  height: 100%;
+  box-sizing: border-box;
+}
+.right-del{
+  color: #fff;
+  text-align: center;
+}

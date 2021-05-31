@@ -1,4 +1,0 @@
-<!--components/test.wxml-->
-<text>{{list}}</text>
-<text>{{num}}</text>
-<view>{{total}}</view>

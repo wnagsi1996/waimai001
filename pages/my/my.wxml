@@ -32,10 +32,10 @@
   <van-cell-group>
     <van-cell title="每日签到" is-link url="/pages/sign/sign" />
     <van-cell title="会员中心" is-link url="/pages/member/member" />
-    <van-cell title="在线定座" is-link />
+    <van-cell title="全部订单" is-link url="/pages/allOrder/allOrder" />
+    <!-- <van-cell title="在线定座" is-link /> -->
     <van-cell title="优惠买单" is-link url="/pages/youhui/youhui" />
-    <van-cell title="收获地址" is-link url="/pages/address/address" />
-    <van-cell title="关于我们" is-link />
+    <van-cell title="收货地址" is-link url="/pages/address/address" />
+    <!-- <van-cell title="关于我们" is-link /> -->
   </van-cell-group>
 </view>
-<c-test list="5"></c-test>

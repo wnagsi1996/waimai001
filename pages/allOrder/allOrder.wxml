@@ -1,0 +1,40 @@
+<!--pages/allOrder/allOrder.wxml-->
+<view class="list" wx:if="{{orderList}}">
+  <view wx:for="{{orderList}}" wx:key="index">
+    <my-slider areaWidth="{{700}}" areaHeight="{{item.status > 0?412:352}}">
+      <view slot="left">
+        <view class="order-dox">
+        <navigator url="/pages/orderDetail/orderDetail?id={{item.id}}" class="weui-cell weui-cell_access" hover-class="none">
+          <view class="order-header">
+            <view class="name">{{item.shopNameZt}}</view>
+            <view class="status">{{item.statusStr}}</view>
+          </view>
+           </navigator>
+          <view class="order-info">
+            <scroll-view scroll-x class="scroll-view">
+              <view class="img-list" >
+                <image wx:for="{{goodsMap[item.id]}}" wx:for-item="imgItem" wx:key-index="idx" wx:key="idx" src="{{imgItem.pic}}"></image>
+              </view>
+            </scroll-view>
+            <view class="order-bottom">
+              <view class="time">{{item.dateAdd}}</view>
+              <view class="price">
+                <text class="icon">￥</text>
+                <text class="num">{{item.amountReal}}</text>
+              </view>
+            </view>
+            <view class="order-btn">
+              <van-button wx:if="{{item.status > 0}}" type="primary" size="small" plain bindtap="_hankShopPhone" data-shopid="{{item.shopIdZt}}">联系商家</van-button>
+              <van-button wx:if="{{item.status== 0}}" type="warning" size="small" plain bindtap="_hankOrderClose" data-id="{{item.id}}">关闭订单</van-button>
+              <van-button wx:if="{{item.status== 0}}" type="primary" size="small" plain bindtap="_hankPay" data-id="{{item.id}}" data-score="{{item.score}}" data-money="{{item.amountReal}}">立即支付</van-button>
+            </view>
+          </view>
+        </view>
+       
+      </view>
+      <view slot="right" class="del-btn" bindtap="deleteOrder" data-id="{{item.id}}">删除</view>
+    </my-slider>
+    </view>
+</view>
+
+
