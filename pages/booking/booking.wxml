@@ -1,0 +1,44 @@
+<!--pages/booking/booking.wxml-->
+<view>
+  <van-field
+    label="姓名"
+    value="{{ name }}"
+    placeholder="请输入姓名"
+    bind:change="onChangeNmae"
+  />
+  <van-field
+    label="联系电话"
+    value="{{ phone }}"
+    placeholder="请输入联系电话"
+    bind:change="onChangePhone"
+  />
+  <van-field
+    label="到店时间"
+    value="{{ time }}"
+    placeholder="请选择到店时间"
+    readonly
+    bindtap="_hankTime"
+  />
+  <view class="node-dox">
+    <van-divider content-position="center">用餐人数</van-divider>
+      <view class="num-dox">
+        <view class="item {{persionNumIndex==index?'active':''}}" wx:for="{{persionNum}}" wx:key="id" data-index="{{index}}" bindtap="_hankIndex">
+          <view class="num">{{item}}</view>
+          <van-icon wx:if="{{persionNumIndex==index}}" class="icon" name="success" size="32rpx" />
+        </view>
+      </view>
+      <van-button type="primary" block bindtap="_hankSubmit">提交</van-button>
+  </view>
+</view>
+
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+  <van-datetime-picker
+  type="datetime"
+  value="{{ currentDate }}"
+  bind:input="onInput"
+  min-date="{{ minDate }}"
+   filter="{{ filter }}"
+    bind:confirm="confirm"
+    bind:cancel="hideDatetimePop"
+/>
+</van-popup>

@@ -122,5 +122,20 @@ Page({
       title: '登陆成功',
     })
     this.getUserApiInfo()
+  },
+  goCoupons(){
+    wx.navigateTo({
+      url: '/pages/coupons/coupons',
+    })
+  },
+  goScore(){
+    wx.navigateTo({
+      url: '/pages/score/score',
+    })
+  },
+  goBrance(){
+    wx.navigateTo({
+      url: '/pages/brance/brance',
+    })
   }
 })

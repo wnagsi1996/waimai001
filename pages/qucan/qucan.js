@@ -1,18 +1,29 @@
 // pages/qucan/qucan.js
+const WXAPI = require('apifm-wxapi')
+
+const AUTH = require('../../utils/auth')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    apiOk: false,
+    isLogined: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    AUTH.checkHasLogined().then(isLogined => {
+      this.setData({
+        isLogined
+      })
+      if(isLogined){
+        this.orderList();
+      }
+    })
   },
 
   /**
@@ -42,25 +53,33 @@ Page({
   onUnload: function () {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  _hankHome(){
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  async orderList(){
+    wx.showLoading();
+    let res=await WXAPI.orderList({
+      token:wx.getStorageSync('token'),
+      type:0,
+      statusBatch: '1,2'
+    });
+    wx.hideLoading();
+    if(res.code==0){
+      this.setData({
+        orderList: res.data.orderList,
+        logisticsMap: res.data.logisticsMap,
+        goodsMap: res.data.goodsMap,
+        apiOk: true
+      })
+    }else{
+      this.setData({
+        orderList: null,
+        logisticsMap: null,
+        goodsMap: null,
+        apiOk: true
+      })
+    }
   }
 })

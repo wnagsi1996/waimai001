@@ -1,0 +1,32 @@
+/* pages/booking/booking.wxss */
+.node-dox{
+  padding:0 30rpx;
+}
+.num-dox{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin:30rpx 0;
+}
+.num-dox .item{
+  width: 280rpx;
+  height: 140rpx;
+  line-height: 140rpx;
+  text-align: center;
+  border:1px solid #888;
+  margin:30rpx 0;
+  position: relative;
+}
+.num-dox .item.active{
+  border:1px solid red;
+  color:red
+}
+.num-dox .item.active .icon{
+  color: red;
+}
+.num-dox .item .icon{
+  position: absolute;
+  right: 20rpx;
+  top:20rpx;
+}

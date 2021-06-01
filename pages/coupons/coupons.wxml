@@ -1,0 +1,48 @@
+<!--pages/coupons/coupons.wxml-->
+<van-tabs active="{{ tabIndex }}" bind:change="onChange">
+  <van-tab title="待领取" />
+  <van-tab title="待使用" />
+  <van-tab title="已失效" />
+</van-tabs>
+
+<view wx:if="{{tabIndex==0}}">
+  <van-empty wx:if="{{coupons==null || coupons.length==0}}" description="暂无数据" />
+  <block wx:else>
+    <view  wx:for="{{coupons}}" wx:key="id"  data-idx="{{index}}"  bindtap="fetchCounpon">
+      <view class="coupons-dox">
+        <view class="coupons-left">
+          <view class="price">
+            <text>￥</text>
+            <text>{{item.moneyMin}}</text>
+          </view>
+          <view class="desc" wx:if="{{item.moneyHreshold > 0}}">满{{item.moneyHreshold}}元可用</view>
+        </view>
+        <view class="coupons-right">
+          <view class="title">{{item.name}}</view>
+          <view class="desc" wx:if="{{item.dateEndType == 1}}">领取后{{item.dateEndDays}}天内使用</view>
+          <view class="desc" wx:if="{{item.dateEndType == 0}}">限{{item.dateEnd}}之前使用</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+<view wx:else>
+  <van-empty wx:if="{{mycoupons==null || mycoupons.length==0}}" description="暂无数据" />
+  <block wx:else>
+    <view  wx:for="{{mycoupons}}" wx:key="id"  data-idx="{{index}}">
+      <view class="coupons-dox">
+        <view class="coupons-left">
+          <view class="price">
+            <text>￥</text>
+            <text>{{item.money}}</text>
+          </view>
+          <view class="desc" wx:if="{{item.moneyHreshold > 0}}">满{{item.moneyHreshold}}元可用</view>
+        </view>
+        <view class="coupons-right">
+          <view class="title">{{item.name}}</view>
+          <view class="desc">限{{item.dateEnd}}之前使用</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

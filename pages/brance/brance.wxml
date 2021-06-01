@@ -1,0 +1,11 @@
+<!--pages/brance/brance.wxml-->
+<view class="container">
+  <view class="top-dox">
+    <view class="name">可用余额</view>
+    <view class="price">
+      <text class="icon">￥</text>
+      <text class="num">0.00</text>
+    </view>
+  </view>
+</view>
+<van-cell title="资金明细" size="large" is-link url="/pages/branceDetail/branceDetail" />

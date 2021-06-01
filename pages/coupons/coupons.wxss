@@ -1,0 +1,33 @@
+/* pages/coupons/coupons.wxss */
+page{
+  background-color: #f7f7f7;
+}
+.coupons-dox{
+  margin:30rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding:20rpx;
+  display: flex;
+}
+.coupons-left{
+  width:200rpx;
+  text-align:center
+}
+.coupons-left text:last-child{
+  font-size: 60rpx;
+  color: red;
+}
+.coupons-left .desc{
+  color: #222;
+}
+.coupons-right{
+  flex: 1;
+  padding-left: 60rpx;
+}
+.coupons-right .title{
+  font-size:32rpx
+}
+.coupons-right .desc{
+  color: #646566;
+  padding-top: 10rpx;
+}

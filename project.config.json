@@ -121,6 +121,34 @@
 					"id": -1,
 					"name": "订单详情",
 					"pathName": "pages/orderDetail/orderDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "取餐",
+					"pathName": "pages/qucan/qucan",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠券",
+					"pathName": "pages/coupons/coupons",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "在线定座",
+					"pathName": "pages/booking/booking",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "余额",
+					"pathName": "pages/brance/brance",
 					"scene": null
 				}
 			]

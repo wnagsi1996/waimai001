@@ -1,0 +1,3 @@
+<!--pages/branceDetail/branceDetail.wxml-->
+<van-cell wx:for="{{cashLogsV2}}" wx:key="id" title="{{item.typeStr}}" label="{{item.dateAdd}}" value="¥{{item.amount}}" />
+<van-empty wx:if="{{!cashLogsV2}}" description="暂无数据" />

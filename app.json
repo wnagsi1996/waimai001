@@ -13,7 +13,12 @@
     "pages/youhui/youhui",
     "pages/member/member",
     "pages/allOrder/allOrder",
-    "pages/orderDetail/orderDetail"
+    "pages/orderDetail/orderDetail",
+    "pages/coupons/coupons",
+    "pages/score/score",
+    "pages/booking/booking",
+    "pages/brance/brance",
+    "pages/branceDetail/branceDetail"
 
   ],
   "window":{

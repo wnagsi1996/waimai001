@@ -1,76 +1,78 @@
-// pages/quhao/quhao.js
-Page({
+const WXAPI = require('apifm-wxapi')
+const AUTH = require('../../utils/auth')
+const APP = getApp()
+APP.configLoadOK = () => {
 
-  /**
-   * 页面的初始数据
-   */
+}
+Page({
   data: {
 
   },
-  getPhoneNumber (e) {
-    console.log(e.detail.errMsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    // wx.authorize({
-    //   scope: 'scope.werun',
-    // }).then(res=>{
-    //   console.log(res)
-    // }).catch(err=>{console.log(err)})
-    //
-    // wx.startLocationUpdateBackground().then(res=>{console.log(res)}).catch(err=>{console.log(err)})
+    
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
+    this.queuingTypes()
+    this.queuingMy()
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  async queuingTypes() {
+    wx.showLoading({
+      title: '',
+    })
+    const res = await WXAPI.queuingTypes()
+    wx.hideLoading({
+      success: (res) => {},
+    })
+    if (res.code == 0) {
+      this.setData({
+        list: res.data
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  async queuingMy() {
+    const res = await WXAPI.queuingMy(wx.getStorageSync('token'))
+    if (res.code == 0) {
+      const mylist = []
+      res.data.forEach(ele => {
+        const queuingLog  = ele.queuingLog
+        const queuingUpType = ele.queuingUpType
+        const waitMinitus = (queuingLog.number - queuingUpType.curNumber -1) * queuingUpType.minitus
+        if (waitMinitus) {
+          queuingLog.waitMinitus = waitMinitus
+        }
+        queuingLog.typeEntity = queuingUpType
+        mylist.push(queuingLog)
+      })
+      this.setData({
+        mylist
+      })
+    }
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  async queuingGet(e) {
+    const index = e.currentTarget.dataset.index
+    const queueType = this.data.list[index]
+    const isLogined = await AUTH.checkHasLogined()
+    if (!isLogined) {
+      AUTH.login(this)
+      return
+    }
+    wx.showLoading({
+      title: '',
+    })
+    const res = await WXAPI.queuingGet(wx.getStorageSync('token'), queueType.id)
+    wx.hideLoading({
+      success: (res) => {},
+    })
+    if (res.code != 0) {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
+    } else {
+      wx.showToast({
+        title: '取号成功'
+      })
+      this.queuingMy()
+    }
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

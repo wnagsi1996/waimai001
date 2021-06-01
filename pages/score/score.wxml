@@ -1,0 +1,3 @@
+<!--pages/score/score.wxml-->
+<van-cell wx:for="{{scoreLogs}}" wx:key="id" title="{{item.typeStr}}" label="{{item.dateAdd}}" value="€{{item.score}}" />
+<van-empty wx:if="{{!scoreLogs}}" description="暂无数据" />

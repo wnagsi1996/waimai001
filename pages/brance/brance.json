@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "余额",
+  "usingComponents": {
+    "van-divider": "@vant/weapp/divider/index",
+    "van-cell": "@vant/weapp/cell/index"
+  }
+}

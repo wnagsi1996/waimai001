@@ -1,4 +1,9 @@
 {
   "navigationBarTitleText": "排队取号",
-  "usingComponents": {}
+  "usingComponents": {
+    "van-cell":"@vant/weapp/cell/index",
+    "van-button":"@vant/weapp/button/index",
+    "van-cell-group":"@vant/weapp/cell-group/index",
+    "van-empty":"@vant/weapp/empty/index"
+  }
 }

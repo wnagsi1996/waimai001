@@ -16,15 +16,15 @@
       </view>
   </view>
   <view class="info-box">
-    <view class="info-item">
+    <view class="info-item" bindtap="goCoupons">
       <text>{{couponStatistics.canUse}}</text>
       <text>优惠券</text>
     </view>
-     <view class="info-item">
+     <view class="info-item"  bindtap="goBrance">
       <text>￥{{balance}}</text>
       <text>余额</text>
     </view>
-     <view class="info-item">
+     <view class="info-item" bindtap="goScore">
       <text>{{score}}</text>
       <text>积分</text>
     </view>
@@ -33,7 +33,7 @@
     <van-cell title="每日签到" is-link url="/pages/sign/sign" />
     <van-cell title="会员中心" is-link url="/pages/member/member" />
     <van-cell title="全部订单" is-link url="/pages/allOrder/allOrder" />
-    <!-- <van-cell title="在线定座" is-link /> -->
+    <van-cell title="在线定座" is-link url="/pages/booking/booking" />
     <van-cell title="优惠买单" is-link url="/pages/youhui/youhui" />
     <van-cell title="收货地址" is-link url="/pages/address/address" />
     <!-- <van-cell title="关于我们" is-link /> -->

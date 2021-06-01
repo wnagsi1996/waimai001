@@ -3,7 +3,6 @@
   "usingComponents": {
     "van-cell": "@vant/weapp/cell/index",
      "van-cell-group": "@vant/weapp/cell-group/index",
-     "van-button": "@vant/weapp/button/index",
-     "c-test":"/components/test"
+     "van-button": "@vant/weapp/button/index"
   }
 }
